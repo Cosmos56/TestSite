@@ -1,0 +1,91 @@
+﻿@model TestSite.Model.CatalogItem
+
+@{
+    ViewData["Title"] = "Регистрация";
+}
+
+<div class="card">
+    
+    <h2 class="card-header info-color white-text text-center py-4">Регистрация организации</h2>
+
+    <div class="card-body px-lg-5 pt-0">
+
+        <form asp-action="Create" class="md-form">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="md-form">
+                        <input type="text" asp-for="OrganizationName" id="organizationname" class="form-control" />
+                        <label asp-for="OrganizationName" for="organizationname"></label>
+                        <span asp-validation-for="OrganizationName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="md-form">
+                        <select asp-for="TypeOwnership" class="form-control">
+                            <option value="" disabled selected>Выбирите форму собственности</option>
+                            <option value="ООО">ООО</option>
+                            <option value="ЗАО">ЗАО</option>
+                            <option value="ОАО">ОАО</option>
+                            <option value="АО">АО</option>
+                            <option value="Публичное АО">Публичное АО</option>
+                            <option value="НКО">НКО</option>
+                        </select>
+                        <span asp-validation-for="TypeOwnership" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <label asp-for="StateDateRegistration" class="ml-3 mb-3"></label>
+                    <div class="md-form mt-4">
+                        <input asp-for="StateDateRegistration" id="statedateregistration" class="form-control mt-3 pb-1"/>
+
+                        <span asp-validation-for="StateDateRegistration" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="md-form mt-4">
+                        <input type="text" asp-for="Ogrn" id="ogrn" class="form-control mt-3 pb-1" />
+                        <label asp-for="Ogrn" for="ogrn"></label>
+                        <span asp-validation-for="Ogrn" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="md-form">
+                        <input type="text" asp-for="Inn" id="inn" class="form-control" />
+                        <label asp-for="Inn" for="inn"></label>
+                        <span asp-validation-for="Inn" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="md-form">
+                        <input type="text" asp-for="Kpp" id="kpp" class="form-control" />
+                        <label asp-for="Kpp" for="kpp"></label>
+                        <span asp-validation-for="Kpp" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            
+            <hr/>
+
+            <div class="row justify-content-center">
+                <div class="col d-flex flex-row-reverse">
+                    <button type="submit" class="btn btn-info btn-lg">Зарегистрировать</button>
+                </div>
+                <div class="col">
+                    <a class="btn btn-danger btn-lg ml-0 mr-0" role="button" aria-pressed="true"
+                       asp-area="" asp-controller="Catalog" asp-action="Index">
+                        Отмена
+                    </a>
+                </div>
+            </div>
+            
+        </form>
+    </div>
+</div>

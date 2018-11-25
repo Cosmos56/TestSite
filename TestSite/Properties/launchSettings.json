@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "TestSite": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "launchUrl": "http://localhost:5000/"
+    }
+  }
+}

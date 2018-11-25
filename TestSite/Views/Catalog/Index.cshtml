@@ -1,0 +1,90 @@
+﻿@using TestSite.ViewModel
+@model IEnumerable<TestSite.Model.CatalogItem>
+
+@{
+    ViewData["Title"] = "Реестр организаций";
+}
+<div class="row justify-content-center">
+    <h2>Реестр организаций</h2>
+</div>
+<hr class="mt-sm-2 mb-sm-4"/>
+<div class="row">
+    <div class="col h-50 align-middle">
+        <form asp-controller="Catalog" asp-action="Search" method="get" class="md-form mt-0 mb-0 row">
+            <div class="w-75 ml-2">
+                <i class="fa fa-search prefix" aria-hidden="true"></i>
+                <input type="text" name="searchstring" id="searchstring" class="form-control">
+                <label class="ml-5" for="searchstring">Название организации, ОГРН, ИНН, КПП</label>
+            </div>
+            <div class="w-auto">
+                <button class="btn btn-elegant btn-sm" type="submit">Найти</button>
+            </div>
+        </form>
+    </div>
+    <div class="col h-50 d-flex flex-row-reverse">
+        @Html.Partial("_Header", new List<Header>
+        {
+            new Header
+            {
+                Controller = "Organization",
+                Action = "Create",
+                Text = "Добавить организацию"
+            }
+        })
+    </div>
+</div>
+<hr class="mt-sm-2 mb-sm-2"/>
+
+<div class="row justify-content-center pl-2 pr-2">
+    <table class="table table-bordered table-hover table-sm text-center align-middle">
+        <thead class="elegant-color white-text">
+        <tr>
+            <th class="h5-responsive">
+                #
+            </th>
+            <th class="h5-responsive">
+                @Html.DisplayNameFor(model => model.OrganizationName)
+            </th>
+            <th class="h5-responsive">
+                @Html.DisplayNameFor(model => model.TypeOwnership)
+            </th>
+            <th class="h5-responsive">
+                @Html.DisplayNameFor(model => model.StateDateRegistration)
+            </th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @{
+            var step = 0;
+        }
+        @foreach (var item in Model)
+        {
+            step++;
+            using (Html.BeginForm("Delete", "Catalog", new {id = item.Id}))
+            {
+                <tr>
+                    <td class="align-middle">
+                        @step
+                    </td>
+                    <td class="align-middle">
+                        <a style="text-decoration: underline;" asp-controller="Organization" asp-action="Details" asp-route-id="@item.Id">
+                            @Html.DisplayFor(modelItem => item.OrganizationName)
+                        </a>
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.TypeOwnership)
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.StateDateRegistration)
+                    </td>
+                    <td class="align-middle">
+                        <button class="btn btn-elegant btn-sm" type="submit" onclick="return confirm('Вы действительно хотите удалить организацию @item.OrganizationName?');">Удалить</button>
+                    </td>
+                </tr>
+            }
+        }
+        </tbody>
+    </table>
+
+</div>

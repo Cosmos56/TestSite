@@ -1,0 +1,9 @@
+﻿@model IEnumerable<TestSite.ViewModel.Header>
+@foreach (var header in @Model)
+{
+    <a class="btn btn-elegant btn-sm ml-0 mr-0" role="button" aria-pressed="true"
+       asp-area="" asp-controller="@header.Controller" asp-action="@header.Action">
+        @header.Text
+    </a>
+}
+

@@ -1,0 +1,50 @@
+﻿@model TestSite.Model.CatalogItem
+
+@{
+    ViewData["Title"] = "Подробная информация";
+}
+<div class="row justify-content-center">
+    <div class="card w-50">
+    
+        <div class="card-header info-color-dark white-text text-center py-2">
+            <div class="row">
+                <div class="position-absolute" style="top: 6px; z-index: 1000">
+                    <a class="btn btn-success btn-sm" role="button" title="Назад"
+                       asp-area="" asp-controller="Catalog" asp-action="Index">
+                        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <div class="col">
+                    <h2 class="mb-0">@Html.DisplayFor(model => model.OrganizationName)</h2>
+                </div>
+            </div>
+        </div>
+    
+        <div class="card-body px-lg-5 pt-4">
+            <div class="row align-middle mb-2">
+                <strong>@Html.DisplayNameFor(model => model.OrganizationName):&nbsp;&nbsp;</strong>
+                <span>"@Html.DisplayFor(model => model.OrganizationName)"</span>
+            </div>
+            <div class="row align-middle mb-2">
+                <strong>@Html.DisplayNameFor(model => model.TypeOwnership):&nbsp;&nbsp;</strong>
+                <span>@Html.DisplayFor(model => model.TypeOwnership)</span>
+            </div>
+            <div class="row align-middle mb-2">
+                <strong>@Html.DisplayNameFor(model => model.StateDateRegistration):&nbsp;&nbsp;</strong>
+                <span>@Html.DisplayFor(model => model.StateDateRegistration) г.</span>
+            </div>
+            <div class="row align-middle mb-2">
+                <strong>@Html.DisplayNameFor(model => model.Ogrn):&nbsp;&nbsp;</strong>
+                <span>@Html.DisplayFor(model => model.Ogrn)</span>
+            </div>
+            <div class="row align-middle mb-2">
+                <strong>@Html.DisplayNameFor(model => model.Inn):&nbsp;&nbsp;</strong>
+                <span>@Html.DisplayFor(model => model.Inn)</span>
+            </div>
+            <div class="row align-middle mb-2">
+                <strong>@Html.DisplayNameFor(model => model.Kpp):&nbsp;&nbsp;</strong>
+                <span>@Html.DisplayFor(model => model.Kpp)</span>
+            </div>
+        </div>
+    </div>
+</div>
